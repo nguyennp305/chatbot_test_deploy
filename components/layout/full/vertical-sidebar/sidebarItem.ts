@@ -32,17 +32,6 @@ const sidebarItem: menu[] = [
         icon: LayoutDashboardIcon,
         to: '/mimi'
     },
-    { header: 'utilities' },
-    {
-        title: 'Typography',
-        icon: TypographyIcon,
-        to: '/ui/typography'
-    },
-    {
-        title: 'Shadow',
-        icon: CopyIcon,
-        to: '/ui/shadow'
-    },
     { header: 'auth' },
     {
         title: 'Login',
@@ -53,17 +42,6 @@ const sidebarItem: menu[] = [
         title: 'Register',
         icon: UserPlusIcon,
         to: '/auth/register'
-    },
-    { header: 'Extra' },
-    {
-        title: 'Icons',
-        icon: MoodHappyIcon,
-        to: '/icons'
-    },
-    {
-        title: 'Sample Page',
-        icon: ApertureIcon,
-        to: '/sample-page'
     },
 ];
 
