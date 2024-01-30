@@ -2,8 +2,10 @@
 import { getChatStream } from "../utils/ai";
 
 export default defineEventHandler(async (event) => {
-  const { messages } = await readBody(event);
-  const stream = await getChatStream({ messages });
+  // const mes = await readBody(event);
+  // console.log("jsonnnnnnnnnnnnnnnnnn", mes)
+  const stream = await getChatStream(event);
+  console.log("streamstreamstream", stream)
 
   return sendStream(event, stream);
 });

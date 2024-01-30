@@ -27,6 +27,7 @@ export default defineNuxtConfig({
   
   runtimeConfig: {
     openAi: {
+      // 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
       secretKey:"",
     },
   },

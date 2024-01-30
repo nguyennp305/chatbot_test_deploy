@@ -5,12 +5,14 @@ import { getAnswer } from "../mimi/repositories/chat";
 import { useChatStream } from "../mimi/composables/chat-stream";
 import { FloatNoneIcon } from 'vue-tabler-icons';
 
+interface IChatHistoryObj {
+  role: string,
+  content: string
+}
 const pendingTime = ref(false);
-
-const chatHistory = ref([]);
-
-const messages = ref([]);
-const answer = ref(null);
+const chatHistory = ref<IChatHistoryObj[]>([]);
+const messages = ref<IChatHistoryObj[]>([]);
+const answer = ref();
 chatHistory.value[0] = {
   role: "assistant",
   content:
@@ -35,13 +37,11 @@ const askQuestion = async () => {
   useChatStream({
     stream,
     onChunk: ({ data }) => {
-      console.log("dataaa", data);
       answer.value.content += data;
     },
     onReady: () => {
       chatHistory.value.push(answer.value);
-      const arr = [];
-      messages.value = arr;
+      messages.value = [];
       // messages.value.push(answer.value);
       answer.value = null;
       pendingTime.value = false;
@@ -103,6 +103,7 @@ const askQuestion = async () => {
               class="form-control"
               v-model="question"
               id="exampleFormControlTextarea1"
+              @keydown.enter="askQuestion"
               rows="3"
             ></textarea>
             <div class="button-send">

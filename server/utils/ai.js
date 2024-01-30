@@ -7,7 +7,9 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export const getChatStream = async ({ messages }) => {
+export const getChatStream = async (mes) => {
+  const data = await readBody(mes)
+  const messages = JSON.parse(data).messages
   const response = await openai.createChatCompletion(
     {
       max_tokens: 2048,
@@ -18,6 +20,6 @@ export const getChatStream = async ({ messages }) => {
     },
     { responseType: "stream" }
   );
-
+  // console.log('response.data', response.data)
   return response.data;
 };
